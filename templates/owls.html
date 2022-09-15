@@ -1,4 +1,12 @@
 {% extends 'default.html' %}
-{% block title %}OWLS{% endblock title %}
-{% block heading %}OWLS{% endblock heading %}
-{% block content %}OWLS{% endblock content %}
+{% block title %}{{ title }}{% endblock title %}
+{% block heading %}{{ title }}{% endblock heading %}
+{% block content %}
+    <ul>
+    {% for owl in owls %}
+        <li>
+            <a href="{{ url_for('owls_show', id=owl.id) }}"><b>{{ owl.name }}</b></a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

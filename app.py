@@ -31,15 +31,15 @@ owls = [
 
 @app.route("/", methods=["GET"])
 def index():
-    return "Welcome to the Owl House!"
+    return render_template("index.html")
 
 @app.route("/about", methods=["GET"])
 def about():
-    return "Owl About Owls"
+    return render_template("about.html")
 
 @app.route("/owls/", methods=["GET"])
 def owls_index():
-    return render_template("owls.html")
+    return render_template("owls.html", owls=owls, title="Our Current Owls")
 
 @app.route("/owls/<int:id>/", methods=["GET", "DELETE", "PATCH"])
 def owls_show(id):
