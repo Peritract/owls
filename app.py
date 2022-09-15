@@ -1,6 +1,8 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request, redirect, url_for
 
 app = Flask(__name__)
+
+# Data (eventually to be replaced with a database)
 
 owls = [
     {
@@ -29,6 +31,8 @@ owls = [
     }
 ]
 
+# Routes
+
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
@@ -52,7 +56,21 @@ def owls_show(id):
 
 @app.route("/owls/new/", methods=["GET", "POST"])
 def owls_new():
-    return "A form to make a new owl"
+    if request.method == "GET":
+        return render_template("new_owl.html")
+    else:
+        name = request.form["name"]
+        colour = request.form["colour"]
+        id = len(owls)
+        owls.append({
+            "id": id,
+            "name": name,
+            "species": "owl",
+            "favourite_colour": colour
+        })
+        return redirect(url_for("owls_show", id=id))
+
+# Error handlers
 
 @app.errorhandler(404)
 def page_not_found(error):

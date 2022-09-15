@@ -1,0 +1,14 @@
+{% extends 'default.html' %}
+{% block headers %}
+{% endblock headers %}
+{% block title %}Add an Owl{% endblock title %}
+{% block heading %}Add an Owl{% endblock heading %}
+{% block content %}
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="colour">Favourite colour:</label>
+        <input type="text" id="colour" name="colour" required />
+        <input type="submit" value="Add"/>
+    </form>
+{% endblock content %}
