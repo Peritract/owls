@@ -43,7 +43,8 @@ def owls_index():
 
 @app.route("/owls/<int:id>/", methods=["GET", "DELETE", "PATCH"])
 def owls_show(id):
-    return "An individual owl"
+    owl = [x for x in owls if x["id"] == id][0]
+    return render_template("owl.html", owl=owl)
 
 @app.route("/owls/new/", methods=["GET", "POST"])
 def owls_new():
