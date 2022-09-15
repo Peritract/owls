@@ -1,0 +1,7 @@
+{% extends 'default.html' %}
+{% block title %}404 Error{% endblock title %}
+{% block heading %}404 - Page Not Found{% endblock heading %}
+{% block content %}
+    <p>{{ error }}</p>
+    <a href="{{ url_for('index') }}">Home</a>
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends 'default.html' %}
+{% block title %}500 Error{% endblock title %}
+{% block heading %}500 - Server Error{% endblock heading %}
+{% block content %}
+    <p>{{ error }}</p>
+    <a href="{{ url_for('index') }}">Home</a>
+{% endblock content %}
